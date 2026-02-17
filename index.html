@@ -4,497 +4,246 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SolGastro | Cocina Central B2B para HORECA en Canarias</title>
-    <meta name="description" content="Externaliza tu cocina con calidad chef. SolGastro: producto + asesoría + formación para restaurantes y hoteles en Tenerife. Ahorra 50.000€/año.">
-    <meta name="keywords" content="cocina centralizada, quinta gama, HORECA, Tenerife, restaurantes, hoteles, externalizar cocina">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍🍳</text></svg>">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'ocean': '#003B5C',
-                        'coral': '#FF6B4A',
-                        'sand': '#F5F5F0',
-                        'ocean-light': '#005a8c',
-                        'coral-dark': '#e55a3b'
-                    },
-                    fontFamily: {
-                        'montserrat': ['Montserrat', 'sans-serif'],
-                        'opensans': ['Open Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
-        .gradient-ocean { background: linear-gradient(135deg, #003B5C 0%, #005a8c 100%); }
-        .gradient-coral { background: linear-gradient(135deg, #FF6B4A 0%, #e55a3b 100%); }
-        .text-gradient { background: linear-gradient(135deg, #003B5C 0%, #FF6B4A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,59,92,0.12); }
-        .btn-primary { transition: all 0.3s ease; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,107,74,0.25); }
-        .smooth-scroll { scroll-behavior: smooth; }
-        .nav-blur { backdrop-filter: blur(12px); background: rgba(255,255,255,0.95); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
         
-        /* Responsive fixes */
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #003B5C 0%, #005a8c 100%); color: white; padding: 100px 20px 60px; text-align: center; }
+        .hero h1 { font-size: 2rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; }
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 5px; transition: transform 0.3s; }
+        .btn:hover { transform: translateY(-3px); }
+        .btn-primary { background: #FF6B4A; color: white; }
+        .btn-secondary { background: rgba(255,255,255,0.2); color: white; border: 2px solid white; }
+        
+        /* Sections */
+        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { color: #003B5C; font-size: 2rem; margin-bottom: 10px; }
+        .section-title p { color: #666; }
+        
+        /* Cards */
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { width: 60px; height: 60px; background: #FF6B4A; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: white; font-size: 1.5rem; }
+        .card h3 { color: #003B5C; margin-bottom: 10px; }
+        
+        /* Solution Section */
+        .solution { background: #003B5C; color: white; }
+        .solution .section-title h2 { color: white; }
+        .solution .section-title p { color: rgba(255,255,255,0.8); }
+        .solution-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .solution-card h3 { color: white; }
+        .solution-card p { color: rgba(255,255,255,0.8); }
+        
+        /* Stats */
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .stat { background: #f8f9fa; padding: 30px; border-radius: 15px; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; color: #003B5C; }
+        .stat-label { color: #666; margin-top: 5px; }
+        
+        /* Contact */
+        .contact { background: #003B5C; color: white; text-align: center; }
+        .contact h2 { margin-bottom: 20px; }
+        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px; }
+        .contact-item { display: flex; align-items: center; gap: 10px; }
+        
+        /* Footer */
+        footer { background: #1a1a1a; color: white; text-align: center; padding: 30px 20px; }
+        
+        /* Mobile */
         @media (max-width: 768px) {
-            .process-line { display: none !important; }
-            .hero-text { font-size: 2.25rem !important; line-height: 1.2 !important; }
-            .solution-box { padding: 1rem !important; }
-            .solution-box p { font-size: 0.875rem !important; }
-        }
-        
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #FF6B4A;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-        
-        .team-card { transition: transform 0.3s, box-shadow 0.3s; }
-        .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        
-        .testimonial-card { position: relative; }
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 6rem;
-            color: #FF6B4A;
-            opacity: 0.2;
-            font-family: Georgia, serif;
-        }
-        
-        .floating-label {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all 0.2s;
-            color: #6b7280;
-            pointer-events: none;
-        }
-        
-        input:focus ~ .floating-label,
-        input:not(:placeholder-shown) ~ .floating-label,
-        textarea:focus ~ .floating-label,
-        textarea:not(:placeholder-shown) ~ .floating-label {
-            top: 0;
-            transform: translateY(-50%) scale(0.85);
-            background: white;
-            padding: 0 0.5rem;
-            color: #003B5C;
+            .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 1rem; }
+            .btn { display: block; margin: 10px auto; max-width: 280px; }
+            section { padding: 40px 15px; }
         }
     </style>
 </head>
-<body class="font-opensans text-gray-700 bg-sand smooth-scroll antialiased">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 nav-blur border-b border-gray-200/50 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                <!-- Logo -->
-                <div class="flex items-center cursor-pointer group" onclick="window.scrollTo(0,0)">
-                    <div class="w-10 h-10 gradient-ocean rounded-xl flex items-center justify-center mr-3 shadow-lg group-hover:scale-105 transition-transform">
-                        <i data-lucide="chef-hat" class="text-white w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <span class="font-montserrat font-bold text-2xl text-ocean tracking-tight">Sol</span>
-                        <span class="font-montserrat font-bold text-2xl text-coral tracking-tight">Gastro</span>
-                    </div>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#solucion" class="nav-link text-gray-700 hover:text-ocean font-medium transition-colors text-sm">Solución</a>
-                    <a href="#como-funciona" class="nav-link text-gray-700 hover:text-ocean font-medium transition-colors text-sm">Proceso</a>
-                    <a href="#servicios" class="nav-link text-gray-700 hover:text-ocean font-medium transition-colors text-sm">Servicios</a>
-                    <a href="#equipo" class="nav-link text-gray-700 hover:text-ocean font-medium transition-colors text-sm">Equipo</a>
-                    <a href="#expansion" class="nav-link text-gray-700 hover:text-ocean font-medium transition-colors text-sm">Expansión</a>
-                    <a href="#inversores" class="nav-link text-gray-700 hover:text-ocean font-medium transition-colors text-sm">Inversores</a>
-                    <a href="#contacto" class="gradient-coral text-white px-6 py-2.5 rounded-full font-semibold btn-primary text-sm shadow-lg shadow-coral/30">
-                        Contactar
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()" aria-label="Menú">
-                    <i data-lucide="menu" class="w-6 h-6 text-ocean" id="menu-icon"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-xl">
-            <div class="px-4 py-4 space-y-1">
-                <a href="#solucion" class="mobile-link block px-4 py-3 text-gray-700 hover:text-ocean hover:bg-sand rounded-lg font-medium transition-colors" onclick="closeMobileMenu()">Solución</a>
-                <a href="#como-funciona" class="mobile-link block px-4 py-3 text-gray-700 hover:text-ocean hover:bg-sand rounded-lg font-medium transition-colors" onclick="closeMobileMenu()">Proceso</a>
-                <a href="#servicios" class="mobile-link block px-4 py-3 text-gray-700 hover:text-ocean hover:bg-sand rounded-lg font-medium transition-colors" onclick="closeMobileMenu()">Servicios</a>
-                <a href="#equipo" class="mobile-link block px-4 py-3 text-gray-700 hover:text-ocean hover:bg-sand rounded-lg font-medium transition-colors" onclick="closeMobileMenu()">Equipo</a>
-                <a href="#expansion" class="mobile-link block px-4 py-3 text-gray-700 hover:text-ocean hover:bg-sand rounded-lg font-medium transition-colors" onclick="closeMobileMenu()">Expansión</a>
-                <a href="#inversores" class="mobile-link block px-4 py-3 text-gray-700 hover:text-ocean hover:bg-sand rounded-lg font-medium transition-colors" onclick="closeMobileMenu()">Inversores</a>
-                <a href="#contacto" class="block px-4 py-3 text-coral font-bold hover:bg-coral/5 rounded-lg transition-colors mt-2 border-t border-gray-100" onclick="closeMobileMenu()">Contactar →</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center gradient-ocean hero-pattern pt-16 md:pt-20 overflow-hidden">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute -top-20 -right-20 w-96 h-96 bg-coral/20 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute -bottom-40 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 right-1/4 w-64 h-64 bg-ocean-light/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <div class="order-2 lg:order-1" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
-                        <span class="w-2 h-2 bg-coral rounded-full mr-2 animate-pulse"></span>
-                        Ahora en Tenerife • Expansión 2025-2026
-                    </div>
-                    
-                    <h1 class="font-montserrat font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6 hero-text">
-                        Olvídate de buscar <span class="text-coral">cocineros</span>.
-                        <br class="hidden sm:block">Concéntrate en tus <span class="text-coral">clientes</span>.
-                    </h1>
-                    
-                    <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-xl">
-                        Externaliza tu cocina con <strong class="text-white">calidad chef</strong>. Somos el socio operativo que elimina la complejidad de tu restaurante, hotel o catering.
-                    </p>
-                    
-                    <!-- Dual CTA -->
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
-                        <a href="#contacto" class="gradient-coral text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-center btn-primary flex items-center justify-center gap-2 shadow-lg shadow-coral/30 text-sm sm:text-base">
-                            <i data-lucide="utensils" class="w-5 h-5"></i>
-                            Soy Restaurante/Hotel
-                        </a>
-                        <a href="#inversores" class="bg-white/10 border-2 border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-center hover:bg-white/20 transition-all flex items-center justify-center gap-2 backdrop-blur-sm text-sm sm:text-base">
-                            <i data-lucide="trending-up" class="w-5 h-5"></i>
-                            Soy Inversor
-                        </a>
-                    </div>
-
-                    <!-- Trust Indicators -->
-                    <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-gray-400 text-xs sm:text-sm">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-coral"></i>
-                            <span>Entrega &lt;24h</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-coral"></i>
-                            <span>Ahorro 50-60k€/año</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-coral"></i>
-                            <span>Calidad Chef</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order-1 lg:order-2 relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
-                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop" alt="Cocina profesional SolGastro" class="w-full h-64 sm:h-80 md:h-96 object-cover" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-ocean/90 via-ocean/20 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
-                            <p class="font-montserrat font-bold text-base sm:text-lg">Cocina Central SolGastro</p>
-                            <p class="text-xs sm:text-sm text-gray-300">Tenerife • 800m² • Tecnología de quinta gama</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Stats Card -->
-                    <div class="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-white rounded-xl p-3 sm:p-4 shadow-xl" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-coral/10 rounded-full flex items-center justify-center">
-                                <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6 text-coral"></i>
-                            </div>
-                            <div>
-                                <p class="text-xl sm:text-2xl font-bold text-ocean stat-counter" data-target="100">0</p>
-                                <p class="text-xs text-gray-500">Clientes objetivo 2026</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="w-5 h-5 sm:w-6 sm:h-6 text-white/50"></i>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Olvídate de buscar cocineros.<br>Concéntrate en tus clientes.</h1>
+        <p>Externaliza tu cocina con calidad chef. Somos el socio operativo que elimina la complejidad de tu restaurante, hotel o catering en Canarias.</p>
+        <div>
+            <a href="#contacto" class="btn btn-primary">Soy Restaurante/Hotel</a>
+            <a href="#inversores" class="btn btn-secondary">Soy Inversor</a>
         </div>
     </section>
 
-    <!-- Problem/Solution Section -->
-    <section id="solucion" class="py-16 sm:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-coral font-semibold text-xs sm:text-sm tracking-wider uppercase">El Problema</span>
-                <h2 class="font-montserrat font-bold text-2xl sm:text-3xl md:text-4xl text-ocean mt-2 mb-4">
-                    La hostelería canaria enfrenta una crisis estructural
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base px-4">
-                    El 38% de las tareas de cocina se proyecta automatizar o externalizar por falta de relevo generacional. Solo el 13,6% de los ocupados tiene menos de 24 años.
-                </p>
+    <!-- Problem -->
+    <section>
+        <div class="section-title">
+            <h2>La hostelería canaria enfrenta una crisis estructural</h2>
+            <p>El 38% de las tareas de cocina se proyecta externalizar por falta de relevo generacional</p>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">!</div>
+                <h3>Falta de Personal</h3>
+                <p>270 ofertas de empleo activas en Tenerife para cocineros. Imposible cubrir vacantes.</p>
             </div>
-
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-20">
-                <div class="text-center p-4 sm:p-6 rounded-xl bg-red-50 border border-red-100" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                        <i data-lucide="user-x" class="w-6 h-6 sm:w-8 sm:h-8 text-red-500"></i>
-                    </div>
-                    <h3 class="font-montserrat font-bold text-base sm:text-lg text-gray-800 mb-2">Falta de Personal</h3>
-                    <p class="text-gray-600 text-xs sm:text-sm">270 ofertas de empleo activas en Tenerife para cocineros. Imposible cubrir vacantes.</p>
-                </div>
-                <div class="text-center p-4 sm:p-6 rounded-xl bg-orange-50 border border-orange-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                        <i data-lucide="trending-down" class="w-6 h-6 sm:w-8 sm:h-8 text-orange-500"></i>
-                    </div>
-                    <h3 class="font-montserrat font-bold text-base sm:text-lg text-gray-800 mb-2">Costes Elevados</h3>
-                    <p class="text-gray-600 text-xs sm:text-sm">50.000-60.000€ anuales por cocinero. Rotación constante y absentismo creciente.</p>
-                </div>
-                <div class="text-center p-4 sm:p-6 rounded-xl bg-yellow-50 border border-yellow-100 sm:col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                        <i data-lucide="alert-triangle" class="w-6 h-6 sm:w-8 sm:h-8 text-yellow-600"></i>
-                    </div>
-                    <h3 class="font-montserrat font-bold text-base sm:text-lg text-gray-800 mb-2">Inestabilidad</h3>
-                    <p class="text-gray-600 text-xs sm:text-sm">Calidad inconsistente, desperdicio del 8%, imposibilidad de escalar.</p>
-                </div>
+            <div class="card">
+                <div class="card-icon">€</div>
+                <h3>Costes Elevados</h3>
+                <p>50.000-60.000€ anuales por cocinero. Rotación constante y absentismo creciente.</p>
             </div>
-
-            <!-- The Solution -->
-            <div class="gradient-ocean rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-white relative overflow-hidden" data-aos="zoom-in">
-                <div class="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-coral opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-                <div class="relative z-10">
-                    <div class="text-center mb-8 sm:mb-10">
-                        <span class="bg-coral text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">NUESTRA SOLUCIÓN</span>
-                        <h3 class="font-montserrat font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 mb-3 sm:mb-4 leading-tight">
-                            "Creamos tu receta, la preparamos, te enseñamos a presentarla"
-                        </h3>
-                        <p class="text-base sm:text-lg md:text-xl text-gray-300">Tú sólo te ocupas de tu cliente</p>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                        <div class="solution-box bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-coral rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                                <i data-lucide="package" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
-                            </div>
-                            <h4 class="font-montserrat font-bold text-base sm:text-lg mb-2">Producto</h4>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Platos elaborados con tecnología chef (vacío, baja temperatura). Solo calientas y emplatas en 3-5 minutos.</p>
-                        </div>
-                        <div class="solution-box bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-coral rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                                <i data-lucide="lightbulb" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
-                            </div>
-                            <h4 class="font-montserrat font-bold text-base sm:text-lg mb-2">Asesoría</h4>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Diseño de carta personalizada, cálculo de costes, optimización de márgenes por expertos MB2.</p>
-                        </div>
-                        <div class="solution-box bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20 sm:col-span-2 md:col-span-1">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-coral rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                                <i data-lucide="graduation-cap" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
-                            </div>
-                            <h4 class="font-montserrat font-bold text-base sm:text-lg mb-2">Formación</h4>
-                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">SOLGASTRO Academy: Certificación "Operador de Cocina Optimizada". No necesitas cocineros.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="card">
+                <div class="card-icon">⚠</div>
+                <h3>Inestabilidad</h3>
+                <p>Calidad inconsistente, desperdicio del 8%, imposibilidad de escalar.</p>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="como-funciona" class="py-16 sm:py-20 bg-sand">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-coral font-semibold text-xs sm:text-sm tracking-wider uppercase">Proceso</span>
-                <h2 class="font-montserrat font-bold text-2xl sm:text-3xl md:text-4xl text-ocean mt-2 mb-3 sm:mb-4">
-                    De tu idea al servicio en 5 fases
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base px-4">
-                    Metodología probada para integrar SolGastro en tu operativa sin fricciones
-                </p>
+    <!-- Solution -->
+    <section class="solution">
+        <div class="section-title">
+            <span style="background: #FF6B4A; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">NUESTRA SOLUCIÓN</span>
+            <h2 style="margin-top: 20px;">"Creamos tu receta, la preparamos, te enseñamos a presentarla"</h2>
+            <p>Tú sólo te ocupas de tu cliente</p>
+        </div>
+        <div class="cards">
+            <div class="card solution-card">
+                <div class="card-icon">📦</div>
+                <h3>Producto</h3>
+                <p>Platos elaborados con tecnología chef (vacío, baja temperatura). Solo calientas y emplatas en 3-5 minutos.</p>
             </div>
-
-            <div class="relative">
-                <!-- Desktop line only -->
-                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-ocean via-coral to-ocean transform -translate-y-1/2 z-0"></div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6 relative z-10">
-                    <div class="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="0">
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 gradient-ocean rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg mb-2 sm:mb-3 md:mb-4 mx-auto">1</div>
-                        <h4 class="font-montserrat font-bold text-center mb-1 sm:mb-2 text-ocean text-sm sm:text-base">Diagnóstico</h4>
-                        <p class="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">Análisis de ubicación, público objetivo, ticket medio y competencia.</p>
-                        <p class="text-xs text-coral text-center mt-1 sm:mt-2 font-semibold">Semana 1</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 gradient-ocean rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg mb-2 sm:mb-3 md:mb-4 mx-auto">2</div>
-                        <h4 class="font-montserrat font-bold text-center mb-1 sm:mb-2 text-ocean text-sm sm:text-base">Propuesta</h4>
-                        <p class="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">Diseño de 3 opciones de carta con 15-25 referencias cada una.</p>
-                        <p class="text-xs text-coral text-center mt-1 sm:mt-2 font-semibold">Semanas 2-3</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 gradient-ocean rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg mb-2 sm:mb-3 md:mb-4 mx-auto">3</div>
-                        <h4 class="font-montserrat font-bold text-center mb-1 sm:mb-2 text-ocean text-sm sm:text-base">Validación</h4>
-                        <p class="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">Degustación en tus instalaciones con personal clave.</p>
-                        <p class="text-xs text-coral text-center mt-1 sm:mt-2 font-semibold">Semana 4</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 gradient-ocean rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg mb-2 sm:mb-3 md:mb-4 mx-auto">4</div>
-                        <h4 class="font-montserrat font-bold text-center mb-1 sm:mb-2 text-ocean text-sm sm:text-base">Puesta en Marcha</h4>
-                        <p class="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">Formación intensiva de personal (8h). Material de apoyo.</p>
-                        <p class="text-xs text-coral text-center mt-1 sm:mt-2 font-semibold">Semanas 5-6</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg card-hover col-span-2 sm:col-span-1" data-aos="fade-up" data-aos-delay="400">
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 gradient-coral rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg mb-2 sm:mb-3 md:mb-4 mx-auto">5</div>
-                        <h4 class="font-montserrat font-bold text-center mb-1 sm:mb-2 text-ocean text-sm sm:text-base">Evolución</h4>
-                        <p class="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">Revisión trimestral de rotación y rentabilidad.</p>
-                        <p class="text-xs text-coral text-center mt-1 sm:mt-2 font-semibold">Continuo</p>
-                    </div>
-                </div>
+            <div class="card solution-card">
+                <div class="card-icon">💡</div>
+                <h3>Asesoría</h3>
+                <p>Diseño de carta personalizada, cálculo de costes, optimización de márgenes por expertos MB2.</p>
             </div>
-
-            <!-- Technology Badge -->
-            <div class="mt-10 sm:mt-16 text-center" data-aos="fade-up">
-                <div class="inline-flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full text-xs sm:text-sm font-medium text-ocean shadow-sm border border-ocean/10 flex items-center gap-1.5 sm:gap-2">
-                        <i data-lucide="snowflake" class="w-3 h-3 sm:w-4 sm:h-4"></i> Ultracongelación -40°C
-                    </span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full text-xs sm:text-sm font-medium text-ocean shadow-sm border border-ocean/10 flex items-center gap-1.5 sm:gap-2">
-                        <i data-lucide="wind" class="w-3 h-3 sm:w-4 sm:h-4"></i> Envasado al Vacío
-                    </span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full text-xs sm:text-sm font-medium text-ocean shadow-sm border border-ocean/10 flex items-center gap-1.5 sm:gap-2">
-                        <i data-lucide="thermometer" class="w-3 h-3 sm:w-4 sm:h-4"></i> Cocción Sous-vide
-                    </span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full text-xs sm:text-sm font-medium text-ocean shadow-sm border border-ocean/10 flex items-center gap-1.5 sm:gap-2">
-                        <i data-lucide="shield-check" class="w-3 h-3 sm:w-4 sm:h-4"></i> Cadena de Frío GPRS
-                    </span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full text-xs sm:text-sm font-medium text-ocean shadow-sm border border-ocean/10 flex items-center gap-1.5 sm:gap-2">
-                        <i data-lucide="qr-code" class="w-3 h-3 sm:w-4 sm:h-4"></i> Trazabilidad QR
-                    </span>
-                </div>
+            <div class="card solution-card">
+                <div class="card-icon">🎓</div>
+                <h3>Formación</h3>
+                <p>SOLGASTRO Academy: Certificación "Operador de Cocina Optimizada". No necesitas cocineros.</p>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="servicios" class="py-16 sm:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-coral font-semibold text-xs sm:text-sm tracking-wider uppercase">Servicios</span>
-                <h2 class="font-montserrat font-bold text-2xl sm:text-3xl md:text-4xl text-ocean mt-2 mb-3 sm:mb-4">
-                    Tres líneas adaptadas a tu modelo
-                </h2>
+    <!-- Services -->
+    <section id="servicios">
+        <div class="section-title">
+            <h2>Tres líneas adaptadas a tu modelo</h2>
+        </div>
+        <div class="cards">
+            <div class="card" style="border-top: 4px solid #003B5C;">
+                <h3 style="color: #003B5C; font-size: 1.3rem; margin-bottom: 5px;">SolGastro Chef</h3>
+                <p style="color: #FF6B4A; font-size: 0.9rem; margin-bottom: 15px;">Restaurantes Independientes</p>
+                <p style="font-size: 0.95rem; margin-bottom: 15px;">Para restaurantes de medio-alto ticket (>25€) con problemas de contratación.</p>
+                <ul style="list-style: none; font-size: 0.9rem; color: #666;">
+                    <li style="margin-bottom: 8px;">✓ Platos: 2.5€ - 9.0€</li>
+                    <li style="margin-bottom: 8px;">✓ Fee asesoría: 300-500€/mes</li>
+                    <li>✓ Carta 100% personalizable</li>
+                </ul>
             </div>
+            <div class="card" style="border-top: 4px solid #FF6B4A;">
+                <h3 style="color: #003B5C; font-size: 1.3rem; margin-bottom: 5px;">SolGastro Hotel</h3>
+                <p style="color: #FF6B4A; font-size: 0.9rem; margin-bottom: 15px;">Hoteles y Apartamentos</p>
+                <p style="font-size: 0.95rem; margin-bottom: 15px;">Para hoteles sin pensión completa que necesitan ofrecer restauración de calidad.</p>
+                <ul style="list-style: none; font-size: 0.9rem; color: #666;">
+                    <li style="margin-bottom: 8px;">✓ Desayuno: 1.5€ - 3.0€</li>
+                    <li style="margin-bottom: 8px;">✓ Plato restaurante: 3.0€ - 7.0€</li>
+                    <li>✓ Solución integral llave en mano</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top: 4px solid #666;">
+                <h3 style="color: #003B5C; font-size: 1.3rem; margin-bottom: 5px;">SolGastro Express</h3>
+                <p style="color: #FF6B4A; font-size: 0.9rem; margin-bottom: 15px;">Cafeterías y Rápido</p>
+                <p style="font-size: 0.95rem; margin-bottom: 15px;">Para cafeterías con espacio limitado y nuevos emprendedores.</p>
+                <ul style="list-style: none; font-size: 0.9rem; color: #666;">
+                    <li style="margin-bottom: 8px;">✓ Precio unitario: 1.8€ - 3.5€</li>
+                    <li style="margin-bottom: 8px;">✓ Sin fee mensual</li>
+                    <li>✓ Volumen mínimo: 300 uds/mes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
-                <!-- SolGastro Chef -->
-                <div class="group relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-transparent hover:border-coral transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="0">
-                    <div class="h-40 sm:h-48 bg-gradient-to-br from-ocean to-ocean-light relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Restaurante" class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-500" loading="lazy">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-16 sm:h-16 text-white/80"></i>
-                        </div>
-                    </div>
-                    <div class="p-5 sm:p-6 flex-1 flex flex-col">
-                        <h3 class="font-montserrat font-bold text-xl sm:text-2xl text-ocean mb-1">SolGastro Chef</h3>
-                        <p class="text-coral font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Restaurantes Independientes</p>
-                        <p class="text-gray-600 mb-4 sm:mb-6 text-xs sm:text-sm flex-1">Para restaurantes de medio-alto ticket (>25€) con problemas de contratación de cocineros cualificados.</p>
-                        
-                        <ul class="space-y-2 mb-4 sm:mb-6">
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-coral mr-2 flex-shrink-0"></i>
-                                <span>Platos: 2.5€ - 9.0€</span>
-                            </li>
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-coral mr-2 flex-shrink-0"></i>
-                                <span>Fee asesoría: 300-500€/mes</span>
-                            </li>
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-coral mr-2 flex-shrink-0"></i>
-                                <span>Carta 100% personalizable</span>
-                            </li>
-                        </ul>
-                        
-                        <button onclick="scrollToContact('chef')" class="w-full py-2.5 sm:py-3 border-2 border-ocean text-ocean rounded-lg font-semibold hover:bg-ocean hover:text-white transition-colors text-sm">
-                            Más información
-                        </button>
-                    </div>
-                </div>
+    <!-- Stats -->
+    <section style="background: #f8f9fa;">
+        <div class="section-title">
+            <h2>Proyección de crecimiento</h2>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">583K€</div>
+                <div class="stat-label">Facturación Año 1</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4M€</div>
+                <div class="stat-label">Facturación Año 3</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">12M€</div>
+                <div class="stat-label">Facturación Año 5</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" style="color: #FF6B4A;">35%</div>
+                <div class="stat-label">ROI Esperado</div>
+            </div>
+        </div>
+    </section>
 
-                <!-- SolGastro Hotel -->
-                <div class="group relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-transparent hover:border-coral transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-40 sm:h-48 bg-gradient-to-br from-coral to-coral-dark relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hotel" class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-500" loading="lazy">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i data-lucide="building-2" class="w-12 h-12 sm:w-16 sm:h-16 text-white/80"></i>
-                        </div>
-                    </div>
-                    <div class="p-5 sm:p-6 flex-1 flex flex-col">
-                        <h3 class="font-montserrat font-bold text-xl sm:text-2xl text-ocean mb-1">SolGastro Hotel</h3>
-                        <p class="text-coral font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Hoteles y Apartamentos</p>
-                        <p class="text-gray-600 mb-4 sm:mb-6 text-xs sm:text-sm flex-1">Para hoteles sin pensión completa que necesitan ofrecer restauración de calidad sin inversión en cocina.</p>
-                        
-                        <ul class="space-y-2 mb-4 sm:mb-6">
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-coral mr-2 flex-shrink-0"></i>
-                                <span>Desayuno: 1.5€ - 3.0€</span>
-                            </li>
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-coral mr-2 flex-shrink-0"></i>
-                                <span>Plato restaurante: 3.0€ - 7.0€</span>
-                            </li>
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-coral mr-2 flex-shrink-0"></i>
-                                <span>Solución integral llave en mano</span>
-                            </li>
-                        </ul>
-                        
-                        <button onclick="scrollToContact('hotel')" class="w-full py-2.5 sm:py-3 border-2 border-ocean text-ocean rounded-lg font-semibold hover:bg-ocean hover:text-white transition-colors text-sm">
-                            Más información
-                        </button>
-                    </div>
-                </div>
+    <!-- Investors -->
+    <section id="inversores">
+        <div class="section-title">
+            <h2>Oportunidad de Inversión</h2>
+            <p>Proyecto escalable, defensivo y con ingresos recurrentes</p>
+        </div>
+        <div class="cards">
+            <div class="card" style="background: #003B5C; color: white;">
+                <h3 style="color: white; margin-bottom: 20px;">Ronda Semilla</h3>
+                <p style="opacity: 0.9; margin-bottom: 15px;"><strong>Inversión:</strong> 620.000€</p>
+                <p style="opacity: 0.9; margin-bottom: 15px;"><strong>Status:</strong> Cerrada</p>
+                <p style="opacity: 0.9; margin-bottom: 15px;"><strong>Break-even:</strong> Mes 14-18</p>
+                <p style="opacity: 0.7; font-size: 0.9rem;">Fase de validación con clientes piloto</p>
+            </div>
+            <div class="card" style="background: #FF6B4A; color: white;">
+                <h3 style="color: white; margin-bottom: 20px;">Serie A (Próxima)</h3>
+                <p style="opacity: 0.9; margin-bottom: 15px;"><strong>Buscamos:</strong> 750.000€</p>
+                <p style="opacity: 0.9; margin-bottom: 15px;"><strong>Valuación:</strong> 2.5M€ pre-money</p>
+                <p style="opacity: 0.9; margin-bottom: 15px;"><strong>Uso:</strong> Expansión Gran Canaria</p>
+                <p style="opacity: 0.7; font-size: 0.9rem;">Track record validado, 100+ clientes</p>
+            </div>
+        </div>
+    </section>
 
-                <!-- SolGastro Express -->
-                <div class="group relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-transparent hover:border-coral transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-40 sm:h-48 bg-gradient-to-br from-gray-700 to-gray-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop" alt="Cafetería" class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-500" loading="lazy">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i data-lucide="coffee" class="w-12 h-12 sm:w-16 sm:h-16 text-white/80"></i>
-                        </div>
-                    </div>
-                    <div class="p-5 sm:p-6 flex-1 flex flex-col">
-                        <h3 class="font-montserrat font-bold text-xl sm:text-2xl text-ocean mb-1">SolGastro Express</h3>
-                        <p class="text-coral font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Cafeterías y Rápido</p>
-                        <p class="text-gray-600 mb-4 sm:mb-6 text-xs sm:text-sm flex-1">Para cafeterías con espacio limitado y nuevos emprendedores que quieren reducir inversión inicial.</p>
-                        
-                        <ul class="space-y-2 mb-4 sm:mb-6">
-                            <li class="flex items-center text-xs sm:text-sm text-gray-700">
-                                <i data-lucide="check" class="w-3
+    <!-- Contact -->
+    <section id="contacto" class="contact">
+        <h2>¿Hablamos de tu proyecto?</h2>
+        <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Ya seas restaurador o inversor, queremos conocerte</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📍</span>
+                <span>Tenerife, Canarias</span>
+            </div>
+            <div class="contact-item">
+                <span>✉</span>
+                <span>info@solgastro.com</span>
+            </div>
+            <div class="contact-item">
+                <span>📞</span>
+                <span>+34 XXX XXX XXX</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <a href="mailto:info@solgastro.com" class="btn btn-primary" style="background: #FF6B4A;">Enviar email</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 10px;"><strong style="font-size: 1.2rem;">Sol<span style="color: #FF6B4A;">Gastro</span></strong></p>
+        <p style="opacity: 0.7; font-size: 0.9rem;">El socio operativo que elimina la complejidad de la cocina</p>
+        <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 20px;">© 2024 SolGastro S.L. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
